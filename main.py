@@ -48,6 +48,6 @@ corr_df = pd.DataFrame(corr_matrix, index=attributes, columns=attributes)
 plt.figure(figsize = (16,16))
 sns.heatmap(corr_df, annot=True, fmt=".2f", cmap="coolwarm", cbar=True)
 plt.title("Macierz korelacji metodą Spearmana")
-plt.tight_layout
+plt.tight_layout()
 plt.savefig(f"figures/spearman_corr.png")
 plt.show()
