@@ -1,18 +1,38 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
 
 df = pd.read_csv("data.csv")
 
-df = df[["Country", "Salary"]].dropna()
-avg_salary_by_country = (
-    df.groupby("Country")["Salary"].mean().sort_values(ascending=False).head(20)
-)
+# Filter by professional developers
+df = df[df["Professional"] == "Professional developer"]
 
-plt.figure(figsize=(12, 8))
-sns.barplot(x=avg_salary_by_country.values, y=avg_salary_by_country.index)
-plt.xlabel("Średnie zarobki brutton (USD)")
-plt.ylabel("Kraj")
-plt.title("Top 20 krajów wg średnich zarobków")
-plt.tight_layout()
-plt.show()
+# Nominal attributes used for data analysis
+attributes = [
+    "Gender",
+    "Country",
+    "YearsCodedJob",
+    "YearsProgram",
+    "FormalEducation",
+    "MajorUndergrad",
+    "DeveloperType",
+    "CompanySize",
+    "EmploymentStatus",
+    "HaveWorkedLanguage",
+    "HaveWorkedFramework",
+    "HaveWorkedDatabase",
+    "HaveWorkedPlatform"
+]
+
+# Draw histograms (attribute values distribution)
+for attr in attributes:
+    attr_counts = df[attr].value_counts().head(20)
+    plt.figure(figsize = (20,20))
+    plt.bar(attr_counts.index, attr_counts.values)
+    plt.xlabel(attr)
+    plt.xticks(rotation=45, ha='right')
+    plt.ylabel("Liczba próbek")
+    plt.title(f"Histogram atrybutu {attr}")
+    plt.tight_layout()
+    plt.savefig(f"figures/histograms/{attr}.png")
+    plt.show()
+
