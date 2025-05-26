@@ -50,7 +50,10 @@ nominal_attrs = [
     "HaveWorkedLanguage",
     "HaveWorkedFramework",
     "HaveWorkedDatabase",
-    "HaveWorkedPlatform"
+    "HaveWorkedPlatform",
+    "HomeRemote",
+    "CompanyType",
+    "Race"
 ]
 
 df_nominal = df[nominal_attrs].dropna()
