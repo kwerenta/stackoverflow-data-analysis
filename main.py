@@ -58,7 +58,7 @@ df_nominal = df[nominal_attrs].dropna()
 # Draw histograms (attribute values distribution)
 for attr in nominal_attrs:
     attr_counts = df_nominal[attr].value_counts().head(10)
-    plt.figure(figsize = (16,12))
+    plt.figure(figsize = (12,8))
     plt.bar(attr_counts.index, attr_counts.values)
     plt.xlabel(attr)
     plt.xticks(rotation=45, ha='right')
@@ -71,7 +71,7 @@ for attr in nominal_attrs:
 # Calculate salary outliers
 valid_idx = df_nominal.dropna().index.intersection(df.index)
 salary = df.loc[valid_idx, ["Salary"]]["Salary"]
-plt.figure(figsize=(16, 12))
+plt.figure(figsize=(12, 8))
 sns.boxplot(x=salary.values)
 plt.xlabel("Salary")
 plt.title(f"Punkty oddalone atrybutu Salary")
@@ -91,7 +91,7 @@ df_encoded = df_nominal.apply(lambda x: pd.factorize(x)[0])
 corr_matrix = spearmanr(df_encoded)[0]
 corr_df = pd.DataFrame(corr_matrix, index=nominal_attrs, columns=nominal_attrs)
 
-plt.figure(figsize = (16,16))
+plt.figure(figsize = (12,12))
 sns.heatmap(corr_df, annot=True, fmt=".2f", cmap="coolwarm", cbar=True)
 plt.title("Macierz korelacji metodą Spearmana")
 plt.tight_layout()
