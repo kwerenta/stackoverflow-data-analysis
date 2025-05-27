@@ -87,7 +87,7 @@ IQR = Q3 - Q1
 lower = Q1 - 1.5 * IQR
 upper = Q3 + 1.5 * IQR
 outliers = salary[(salary < lower) | (salary > upper)]
-print(f"Salary - punkty oddalone\n\t{salary.describe()}\n\tLiczba outlierów = {len(outliers)}")
+print(f"Salary - punkty oddalone\n{salary.describe()}\n\tPrzedział wartośći <{max(0, lower)}, {upper}>\n\tLiczba outlierów = {len(outliers)}")
 
 # Encode values of nominal attributes as integers
 df_encoded = df_nominal.apply(lambda x: pd.factorize(x)[0])
