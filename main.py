@@ -14,25 +14,25 @@ df = df[df["Salary"].notna()]
 # Convert numeric salary into nominal categories
 def salary_category(s):
     if s < 15000:
-        return "< 15e3$"
+        return "< $15k"
     elif s < 30000:
-        return "< 30e3$"
+        return "<$15k, $30k)"
     elif s < 45000:
-        return "< 45e3$"
+        return "<$30k, $45k)"
     elif s < 60000:
-        return "< 60e3$"
+        return "<$45k, $60k)"
     elif s < 75000:
-        return "< 75e3$"
+        return "<$60k, $75k)"
     elif s < 90000:
-        return "< 90e3$"
+        return "<$75k, $90k)"
     elif s < 105000:
-        return "< 105e3$"
+        return "<$90k, $105k)"
     elif s < 120000:
-        return "< 120e3$"
+        return "<$105k, $120k)"
     elif s < 135000:
-        return "< 135e3$"
+        return "<$120k, $135k)"
     else:
-        return ">= 135e3$"
+        return ">= 135k$"
 df['SalaryClass'] = df['Salary'].apply(salary_category)
 
 # Nominal attributes used for data analysis
